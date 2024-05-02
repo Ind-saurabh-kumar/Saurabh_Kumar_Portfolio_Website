@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Password Toggle</title>
+    <!-- Add Font Awesome CDN link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script>
+        function togglePassword(fieldId, eyeIconId) {
+            var passwordField = document.getElementById(fieldId);
+            var eyeIcon = document.getElementById(eyeIconId);
+
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                eyeIcon.className = "fa fa-eye-slash";
+            } else {
+                passwordField.type = "password";
+                eyeIcon.className = "fa fa-eye";
+            }
+        }
+    </script>
+</head>
+<body>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password">
+    <i id="eye-icon" class="fa fa-eye" onclick="togglePassword('password', 'eye-icon')"></i>
+    <br><br>
+    <label for="confirm_password">Confirm Password:</label>
+    <input type="password" id="confirm_password" name="confirm_password">
+    <i id="confirm-eye-icon" class="fa fa-eye" onclick="togglePassword('confirm_password', 'confirm-eye-icon')"></i>
+</body>
+</html>

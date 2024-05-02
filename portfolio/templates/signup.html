@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+
+{% load static %}
+
+{% block signup %}
+
+ 
+
+  <div class="signupcontainer">  
+          
+
+
+          
+                   <div class="form login">
+
+                  <div class="form-content">
+                    <!---------------message start-------------------->
+
+                    <div class="message">
+                      {% if messages %}
+                      {% for message in messages %}
+                          <div id="flash-message" class="alert alert-{{ message.tags }}">
+                              {{ message }}
+                          </div>
+                          <script>
+                              setTimeout(function() {
+                                  document.getElementById("flash-message").style.display = "none";
+                              }, 3000); // Adjust the time (in milliseconds) as per your requirement
+                          </script>
+                      {% endfor %}
+                  {% endif %}
+                  </div>
+                <!---------------message ends-------------------->
+
+
+                
+                      <header>SignUp</header>
+                      <form action="/auth/signup/" method="post">
+                        {% csrf_token %}
+
+                        <div class="field input-field">
+                          <input type="text" placeholder="First Name" class="first_name" name = "first_name" id="first_name"> 
+                        </div>
+
+                        <div class="field input-field">
+                          <input type="text" placeholder="Last Name" class="last_name" name = "last_name" id="last_name"> 
+                        </div>
+                    
+                        <div class="field input-field">
+                          <input type="email" placeholder="Email" class="email" name = "email" id="email"> 
+                        </div>
+
+
+                        <div class="field input-field">
+                          <input type="password" placeholder="Password" class="password" name = "pass1" id="pass1">
+                          <i class='bx bx-hide eye-icon'></i>
+                        </div>
+
+
+                        <div class="field input-field">
+                          <input type="password" placeholder="Password" class="password" name = "pass2" id="pass1">
+                          <i class='bx bx-hide eye-icon'></i>
+                        </div>
+
+
+                        <div class="field button-field">
+                          <button type="submit">Log in</button>
+                      </div>
+                        <span id="signupspan">Already have account? <a href="/auth/login/">Login</a></span>
+                        <br />
+                    </div>
+
+                      
+                 
+
+                  <div class="line"></div>
+
+                </form>
+
+                  <div class="media-options">
+                      <a href="#" class="field google">
+                          <img src="{% static 'assets/media/img/google.png' %}" alt="" class="google-img">
+                          <span>SignUp with Google</span>
+                      </a>
+                  </div>
+
+              </div>
+
+          </div>
+
+     
+
+
+          {% endblock signup %}
+
+
+          

@@ -1,0 +1,229 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>DevFolio Bootstrap Portfolio Template - Index</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/media/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'assets/media/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel='stylesheet'>
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css'>
+
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
+    </div>
+  </header><!-- End Header -->
+
+  <nav>
+    <div class="nav-bar">
+        <i class='bx bx-menu sidebarOpen' ></i>
+        <span class="logo navLogo"><a href="#">SAURABH KUMAR</a></span>
+
+        <div class="menu">
+            <div class="logo-toggle">
+                <span class="logo"><a href="#">SAURABH KUMAR</a></span>
+                <div id="menuclose">
+                  <i class='bx bx-x siderbarClose'></i>
+                </div>
+                
+            </div>
+
+            <ul id="navli" class="nav-links">
+                <li><a href="home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#Project">Projects</a></li>
+                <li><a href="#Achievments">Achievments</a></li>
+                <li><a href="#Blogs">Blogs</a></li>
+                <li><a href="#Contact">Contact</a></li>
+            </ul>
+
+        </div>
+
+          
+          <div class="account">
+            <div class="user">
+
+          
+              {% if request.user.is_authenticated  %}
+                <li class="dropdown"><a class="profile" href="#"><img src="{% static 'assets/media/img/user.png' %}" alt=""></a>
+                  <ul>
+                    <li><a href="">Profile<i class="fa-solid fa-user"></i></a></li>
+                    <li><a href="/auth/logout/">LogOut</a></li>
+                  </ul>
+              
+              {% else %}
+                <li class="dropdown"><a class='username btn btn-success ' href="#" type="submit">Login</a>
+                  <ul>
+                    <li><a href="/auth/signup/" class="opt">SignUp</a></li>
+                    <li><a href="/auth/login/" class="opt">Login</a></li>
+                  </ul>
+                </li>
+                
+              {% endif %}
+
+            </div>
+          </div>
+
+        
+            
+        <div class="darkLight-searchBox">
+            <div class="dark-light">
+                <i class='bx bx-moon moon'></i>
+                <i class='bx bx-sun sun'></i>
+            </div>
+
+            <div class="searchBox">
+               <div class="searchToggle">
+                <i class='bx bx-x cancel'></i>
+                <i class='bx bx-search search'></i>
+               </div>
+
+                <div class="search-field">
+                    <input type="text" placeholder="Search...">
+                    <i class='bx bx-search'></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+
+        <div class="logincontainer">
+          <div class="form login">
+        <!---------------message start-------------------->
+
+        <div class="message">
+          <form>
+                {% for message in messages %}
+
+            <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+               <strong>{{message}}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+
+            
+        </form>
+          
+      </div>
+    <!---------------message ends-------------------->
+
+            
+                <div class="form-content">
+                    <header>Login</header>
+                    <form action="/auth/login/" method="POST">
+
+
+                        {% csrf_token %}
+
+
+
+                        <div class="field input-field">
+                            <input type="email" placeholder="Email" class="email" name = "email" id="email">
+                           
+                        </div>
+
+                        
+                        <div class="field input-field">
+                            <input type="password" placeholder="Password" class="password" name = "pass1" id="pass1">
+                            <i class='bx bx-hide eye-icon'></i>
+                        </div>
+
+                        <div class="field button-field">
+                            <button type="submit">Log in</button>
+                        </div>
+                     
+                    <span> Forget Password? <a href="/auth/request-reset-email/">Reset</a></span> 
+                    <span>New User? <a href="/auth/signup/">Signup</a><span>
+                </div>
+
+              </form>
+
+                <div class="line"></div>
+
+                <div class="media-options">
+                    <a href="#" class="field google">
+                        <img src="{% static 'assets/media/img/google.png' %}" alt="" class="google-img">
+                        <span>Login with Google</span>
+                    </a>
+                </div>
+
+              </form>
+
+            </div>
+
+
+        </div>
+
+
+        
+        
+
+
+
+        <footer>
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="copyright-box">
+                    <p class="copyright">&copy; Copyright <strong>2024</strong>. All Rights Reserved</p>
+                    <div class="credits">
+                      
+                      Designed by <a href="#">Saurabh Kumar</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </footer><!-- End  Footer -->
+          
+          <div id="preloader"></div>
+          <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+          
+          <!-- Vendor JS Files -->
+          <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+          <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+          <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+          <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+          <script src="{% static 'assets/vendor/typed.js/typed.umd.js' %}"></script>
+          <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+          
+          <!-- Template Main JS File -->
+          <script src="{% static 'assets/js/main.js' %}"></script>
+          <script src="{% static 'assets/js/nav.js' %}"></script>
+          <script src="{% static 'assets/js/herosli.js' %}"></script>
+          <script src="{% static 'assets/js/slid2.js' %}"></script>
+          <script src="{% static 'assets/js/login.js' %}"></script>
+          <script src="{% static 'assets/js/validation.js' %}"></script>
+          
+          
+          
+          
+          </body>
+  
